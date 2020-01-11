@@ -1,6 +1,6 @@
 # Adjust to your needs
 # ------------------------------------------------------------------------------
-$scannerID = 0 # 0-based index of the device, use Get-Scanner without arguments if unsure
+$scannerID = 0 # 0-based index of the device, call Print-Scanners if unsure
 $dpi = 450
 $format = 'tiff' # jpeg, png, tiff
 $quality = 95 # jpeg quality
@@ -61,7 +61,7 @@ function Convert-Image($image) {
 }
 
 function Scan() {
-    $device = (Get-Scanner $snannerID).DeviceObject.Connect()
+    $device = (Get-Scanner $scannerID).DeviceObject.Connect()
     foreach ($item in $device.Items) {
         $item.Properties.Item("Horizontal Resolution").Value = $dpi
         $item.Properties.Item("Vertical Resolution").Value = $dpi

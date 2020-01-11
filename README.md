@@ -1,6 +1,6 @@
 # Neat Button Scan
 
-Small script (with nice GUI) for scanning triggered by scanner's button press. For Windows (10) only.
+Small script (with a nice GUI) for scanning triggered by scanner's button press. For Windows (10) only.
 It works well on my PC, but bugs are expected due to different environments. Please report if you find one.
 
 ## What's required?
@@ -14,7 +14,7 @@ There are two scripts: one `nbs.ahk` ([AutoHotkey](https://www.autohotkey.com)),
 
 ### Button press detection
 
-If there is no default scanner's button action set, Windows shows a popup window for you to select an action to perform (execute an app). Neat Button Scan detects this little window, immediately closes it, and then starts its job. So if you *have* set a default app for the button you press, Neat Button Scan will not work - the default app will be executed instead. Go to Windows' scanner setting to set/reset default action for a button you want to use.
+If there is no default scanner's button action set, Windows shows a popup window for you to select an action to perform (execute an app). Neat Button Scan detects this little window, immediately closes it, and then starts its job. So if you *have* set a default app for the button you press, Neat Button Scan will not work – the default app will be executed instead. Go to Windows' scanner setting to set/reset default action for a button you want to use.
 
 ## Configure and test
 
@@ -25,7 +25,7 @@ To check scanning is working, execute the [PowerShell](https://github.com/PowerS
 $ .\nbs.ps1
 ```
 
-You shoul see something like:
+Scanner should start scanning and you should see, in the end, something like:
 
 ```
 Scanning to D:\Home\Documents\From-Scanner\img-023.tiff ...
