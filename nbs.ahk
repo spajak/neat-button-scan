@@ -1,6 +1,6 @@
 ; Adjust to your needs
 ; ------------------------------------------------------------------------------
-scannerName := "CanoScan LiDE 210" ; Title of popup window shown on button press
+scannerName := "CanoScan LiDE 210" ; Title of popup window shown by Windows on button press
 waitTime := 8250 ; Wait for scanner to return in ms
 scriptPath := A_ScriptDir . "\" . "nbs.ps1"
 ; ------------------------------------------------------------------------------

@@ -14,11 +14,11 @@ There are two scripts: one `nbs.ahk` ([AutoHotkey](https://www.autohotkey.com)),
 
 ### Button press detection
 
-If there is no default scanner's button action set, Windows shows a popup window for you to select an action to perform (execute an app). Neat Button Scan detects this little window, immediately closes it, and then starts its job. So if you *have* set a default app for the button you press, Neat Button Scan will not work – the default app will be executed instead. Go to Windows' scanner setting to set/reset default action for a button you want to use.
+If there is no default scanner's button action set, Windows shows a popup window for you to select an action to perform (execute an app). Neat Button Scan detects this little window, immediately closes it, and then starts its job. So if you *have* set a default app for the button you press, Neat Button Scan will *not* work – the default app will be executed instead. Go to Windows' scanner setting to set/reset default action for a button you want to use.
 
 ## Configure and test
 
-There is not separate configuration file. Both scripts have configurable variables on the top. So you have to modify them in order to use it.
+There is no separate configuration file. Both scripts have configurable variables on the top. So you have to modify them in order to use it.
 To check scanning is working, execute the [PowerShell](https://github.com/PowerShell/PowerShell)'s script by hand:
 
 ```
@@ -32,7 +32,7 @@ Scanning to D:\Home\Documents\From-Scanner\img-023.tiff ...
 Done!!
 ```
 
-If not, and your setting are correct, please report a bug.
+If not, and you're sure your settings are correct, please report a bug.
 
 ## Screenshots
 
