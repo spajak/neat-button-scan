@@ -4,7 +4,9 @@ $scannerID = 0 # 0-based index of the device, call Print-Scanners if unsure
 $dpi = 450
 $format = 'tiff' # jpeg, png, tiff
 $quality = 95 # jpeg quality
-$filePathFormat = 'D:\Home\Documents\From-Scanner\img-{0:d3}.{1}'
+$filePathFormat = 'D:\Home\Documents\From-Scanner\scan-{0:d3}.{1}'
+# Custom page extent (x, y, w, h) in mm; eg. @(31, 8, 148, 178); set to $null to disable
+$extent = @(31, 8, 148, 178)
 # ------------------------------------------------------------------------------
 
 # Exit on any error
@@ -60,11 +62,21 @@ function Convert-Image($image) {
     return $imageProcess.Apply($image)
 }
 
+function Metrics-To-Pixels([Int] $value) {
+    return [Math]::Round(($value / 25.4) * $dpi)
+}
+
 function Scan() {
     $device = (Get-Scanner $scannerID).DeviceObject.Connect()
     foreach ($item in $device.Items) {
         $item.Properties.Item("Horizontal Resolution").Value = $dpi
         $item.Properties.Item("Vertical Resolution").Value = $dpi
+        if ($extent -is [Array]) {
+            $item.Properties.Item("Horizontal Start Position").Value = Metrics-To-Pixels($extent[0])
+            $item.Properties.Item("Vertical Start Position").Value = Metrics-To-Pixels($extent[1])
+            $item.Properties.Item("Horizontal Extent").Value = Metrics-To-Pixels($extent[2])
+            $item.Properties.Item("Vertical Extent").Value = Metrics-To-Pixels($extent[3])
+        }
         $image = $item.Transfer($formatID)
     }
     if ($image.FormatID -ne $formatID) {
@@ -75,7 +87,9 @@ function Scan() {
 
 function Get-NextPath() {
     $i = 1
-    while (Test-Path ($filePathFormat -f $i, $format)) { ++$i }
+    while (Test-Path ($filePathFormat -f $i, $format)) {
+        ++$i
+    }
     return $filePathFormat -f $i, $format
 }
 
